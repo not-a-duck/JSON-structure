@@ -1,0 +1,30 @@
+{
+	"person": {
+		"name": "Apple",
+		"surname": "Banana",
+		"age": 123
+	},
+	"people": [
+		{
+			"name": "Willy",
+			"surname": "Wonka",
+			"age": 456
+		},
+		{
+			"name": "John",
+			"surname": "Nhoj",
+			"age": 789
+		}
+	],
+	"silly": {
+		"integers": [
+			1,
+			2,
+			3
+		],
+		"numbers": [
+			1
+		]
+	},
+	"emptylist": []
+}
