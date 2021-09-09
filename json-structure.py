@@ -110,7 +110,7 @@ class TypeDefinition:
 
         return False
 
-    def __repr__(self, pointer=True, skip=False):
+    def __str__(self, pointer=True, skip=False):
         """
         If pointer=True, we ought to return the pointer every chance we get.
         However, sometimes we may want to skip at least one level of depth, to
@@ -128,10 +128,7 @@ class TypeDefinition:
             s = (
                 "{"
                 + ",".join(
-                    [
-                        f'"{key}":{value.__repr__(pointer)}'
-                        for key, value in self.D.items()
-                    ]
+                    [f'"{key}":{value.__str__(pointer)}' for key, value in self.D.items()]
                 )
                 + "}"
             )
@@ -139,7 +136,7 @@ class TypeDefinition:
 
         if self.L is not None:
             # LIST
-            s = "[" + ",".join([f"{value.__repr__(pointer)}" for value in self.L]) + "]"
+            s = "[" + ",".join([f"{value.__str__(pointer)}" for value in self.L]) + "]"
             return s
 
         if self.B is not None:
@@ -193,12 +190,12 @@ class TypeDefinition:
 root = TypeDefinition.from_dict(j)
 print("Freshly parsed")
 print(root)
-result = json.loads(root.__repr__(pointer=True))
+result = json.loads(root.__str__(pointer=True))
 
 print("Types")
 types = {}
 for k, v in TypeDefinition.S.items():
-    types[v] = json.loads(k.__repr__(pointer=True, skip=True))
+    types[v] = json.loads(k.__str__(pointer=True, skip=True))
 
 print(json.dumps(types, indent=2))
 
